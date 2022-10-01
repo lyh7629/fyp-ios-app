@@ -8,9 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+//        init() {
+//            UITabBar.appearance().barTintColor = UIColor.lightGray
+//            }
+    
+    @State private var selection = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView {
+            SearchView().tabItem {
+                Image(systemName: "magnifyingglass")
+                Text("Search")
+            }
+            .tag(0)
+            
+            HomeView().tabItem {
+                Image(systemName: "star.fill")
+                Text("Favorite")
+            }
+            .tag(1)
+            
+            BusView().tabItem {
+                Image(systemName: "bus.doubledecker.fill")
+                Text("Bus")
+            }
+            .tag(2)
+            
+            SettingView().tabItem {
+                Image(systemName: "gear")
+                Text("Setting")
+            }
+        }
+        .tabViewStyle(DefaultTabViewStyle())
     }
 }
 
